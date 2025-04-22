@@ -3,10 +3,11 @@ import cv2
 from ultralytics import YOLO
 import pandas as pd
 import numpy as np
+import os
 
 def train_val_model(data_path, save_dir):
     # YOLO 모델 초기화 (학습 전: 초기 모델 경로, 학습 후: 현재 학습된 모델 경로)
-    model = YOLO('users_dir/yolo11n.pt')
+    model = YOLO('/workspace/seonghyeon/mobility/runs/detect/train/weights/best.pt')
 
    
     # 모델 학습 수행
@@ -16,6 +17,7 @@ def train_val_model(data_path, save_dir):
         imgsz=640,              # 입력 이미지 크기 (픽셀)
         device=0                # 학습에 사용할 디바이스 ('cpu': CPU, 0: 첫 번째 GPU, [0,1,2,3]: 여러 GPU)
     )
+    
     # 모델 검증 수행
     results_val = model.val(
         data=data_path,         # 데이터셋 YAML 파일 경로
@@ -65,9 +67,12 @@ def train_val_model(data_path, save_dir):
     # DataFrame으로 변환
     df_class_metrics = pd.DataFrame(class_metrics)
     df_overall_metrics = pd.DataFrame([overall_metrics])
-
+    for folder in os.listdir(base_dir):
+        if folder.startswith('validation'):
+            validation_folder = folder
+    excel_dir = os.path.join(base_dir, validation_folder)
     # 결과를 엑셀 파일로 저장
-    with pd.ExcelWriter('/users_dir/detection_metrics_results.xlsx') as writer:
+    with pd.ExcelWriter(excel_dir + '/detection_metrics_results.xlsx') as writer:
         df_class_metrics.to_excel(writer, sheet_name='Class Metrics', index=False)
         df_overall_metrics.to_excel(writer, sheet_name='Overall Metrics', index=False)
 
@@ -80,7 +85,7 @@ def train_val_model(data_path, save_dir):
 
 def test_model_webcam():
     # YOLO 모델 초기화
-    model = YOLO('users_dir/yolo11n.pt')
+    model = YOLO('D:\\mobility_experiments\\best.pt')
 
     # 웹캠 열기
     cap = cv2.VideoCapture(0)
