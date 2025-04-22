@@ -57,6 +57,6 @@ detection_metrics_results.xlsx
 ```
 
 ## 요구사항
-- Python 3.6+
+- Python 3.8+
 - CUDA 지원 GPU (선택)
 - 웹캠 (실시간 테스트용)
