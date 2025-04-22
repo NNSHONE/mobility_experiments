@@ -13,9 +13,6 @@ YOLOv11을 활용한 객체 검출 프로젝트입니다. 모델 학습, 실시�
 ```bash
 # 필수 라이브러리 설치
 pip install ultralytics
-pip install opencv-python
-pip install pandas
-pip install numpy
 ```
 
 ## 사용법
