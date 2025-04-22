@@ -67,7 +67,7 @@ def train_val_model(data_path, save_dir):
     df_overall_metrics = pd.DataFrame([overall_metrics])
 
     # 결과를 엑셀 파일로 저장
-    with pd.ExcelWriter('/workspace/seonghyeon/detection_metrics_results.xlsx') as writer:
+    with pd.ExcelWriter('/users_dir/detection_metrics_results.xlsx') as writer:
         df_class_metrics.to_excel(writer, sheet_name='Class Metrics', index=False)
         df_overall_metrics.to_excel(writer, sheet_name='Overall Metrics', index=False)
 
