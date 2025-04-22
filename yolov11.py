@@ -27,7 +27,7 @@ def train_val_model(data_path, save_dir):
         name="validation",      # 저장 폴더 이름
         imgsz=640,              # 이미지 크기
         batch=1,                # 배치 크기 (사용자의 컴퓨팅 자원에 맞게 설정)
-        device="cpu",           # 검증에 사용할 디바이스 ('cpu': CPU, 0: 첫 번째 GPU, [0,1,2,3]: 여러 GPU)
+        device=0,           # 검증에 사용할 디바이스 ('cpu': CPU, 0: 첫 번째 GPU, [0,1,2,3]: 여러 GPU)
         plots=True              # 플롯 생성 여부
     )
 
