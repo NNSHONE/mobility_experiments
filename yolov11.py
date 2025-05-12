@@ -67,10 +67,10 @@ def train_val_model(data_path, save_dir):
     # DataFrame으로 변환
     df_class_metrics = pd.DataFrame(class_metrics)
     df_overall_metrics = pd.DataFrame([overall_metrics])
-    for folder in os.listdir(base_dir):
+    for folder in os.listdir(save_dir):
         if folder.startswith('validation'):
             validation_folder = folder
-    excel_dir = os.path.join(base_dir, validation_folder)
+    excel_dir = os.path.join(save_dir, validation_folder)
     # 결과를 엑셀 파일로 저장
     with pd.ExcelWriter(excel_dir + '/detection_metrics_results.xlsx') as writer:
         df_class_metrics.to_excel(writer, sheet_name='Class Metrics', index=False)
