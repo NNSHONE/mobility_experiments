@@ -18,15 +18,20 @@ pip install ultralytics
 ## 사용법
 ### 1. 모델 학습
 ```bash
-python yolov11.py --train --data [데이터셋 YAML 경로] --save_dir [저장 경로]
+python yolov11.py --train --data [데이터셋 YAML 경로]
 ```
 
-### 2. 웹캠 실시간 객체 검출
+### 2. 모델 평가 확인
+```bash
+python yolov11.py --val --data [데이터셋 YAML 경로]
+```
+
+### 3. 웹캠 실시간 객체 검출
 ```bash
 python yolov11.py --test_cam
 ```
 
-### 3. 이미지 객체 검출
+### 4. 이미지 객체 검출
 ```bash
 python yolov11.py --test_image [이미지 경로]
 ```
