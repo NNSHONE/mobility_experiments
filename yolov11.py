@@ -14,7 +14,7 @@ def train_val_model(mode,data_path):
         # 모델 학습 수행
         results_train = model.train(
             data=data_path,         # 데이터셋 YAML 파일 경로
-            epochs=1,              # 전체 데이터셋에 대한 학습 반복 횟수
+            epochs=100,              # 전체 데이터셋에 대한 학습 반복 횟수
             imgsz=640,              # 입력 이미지 크기 (픽셀)
             device='cpu',           # 학습에 사용할 디바이스 ('cpu': CPU, 0: 첫 번째 GPU, [0,1,2,3]: 여러 GPU)
             name = "D:\mobility_experiments\\train_results",        # 저장할 파일 경로  
