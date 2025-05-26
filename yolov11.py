@@ -1,5 +1,5 @@
 import argparse
-import cv2
+# import cv2
 from ultralytics import YOLO
 import pandas as pd
 import numpy as np
